@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-multipart
+jinja2
+scikit-learn
+numpy
+langchain
+langchain-community
+langchain-ollama
+pypdf
+python-docx
+ollama
+python-dateutil
+python-dotenv
