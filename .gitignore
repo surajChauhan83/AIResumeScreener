@@ -8,4 +8,5 @@ temp/*.docx
 *.egg-info/
 dist/
 .DS_Store
-__init____.py
+__pycache__/
+*.pyc
