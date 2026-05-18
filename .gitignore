@@ -8,5 +8,3 @@ temp/*.docx
 *.egg-info/
 dist/
 .DS_Store
-__pycache__/
-*.pyc
