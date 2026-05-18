@@ -1,0 +1,11 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+temp/*.pdf
+temp/*.docx
+*.egg-info/
+dist/
+.DS_Store
+__init____.py
