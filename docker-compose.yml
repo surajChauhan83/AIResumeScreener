@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+
+  api:
+    build: .
+    container_name: resume_api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - ollama
+    volumes:
+      - .:/app
+    environment:
+      - OLLAMA_HOST=ollama
+      - OLLAMA_MODEL=llama3      # override with phi3:mini if no GPU
+      - EMBED_MODEL=nomic-embed-text
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+    # Uncomment below if you have an NVIDIA GPU:
+    # runtime: nvidia
+    # environment:
+    #   - NVIDIA_VISIBLE_DEVICES=all
+
+volumes:
+  ollama_data:
