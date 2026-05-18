@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Resume Screening</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="background-glow"></div>
+
+<div class="main-container">
+
+  <!-- Hero -->
+  <div class="hero-section">
+    <div class="badge">AI Powered Resume Intelligence</div>
+    <h1>Smart Resume Screening</h1>
+    <p>Upload a resume and job description — get a match score, skill analysis, experience, and AI explanation instantly.</p>
+    <div class="model-info" id="modelInfo">
+      Model: <strong>{{ model }}</strong> &nbsp;|&nbsp;
+      GPU: <strong>{{ "Yes ✅" if gpu else "No (CPU mode)" }}</strong>
+    </div>
+  </div>
+
+  <!-- Input card -->
+  <div class="card">
+
+    <div class="input-group">
+      <label>Job Description</label>
+      <textarea id="jd" placeholder="Paste the full job description here..."></textarea>
+    </div>
+
+    <div class="input-group">
+      <label>Upload Resume <span style="opacity:.6;font-size:.85rem">(PDF or DOCX)</span></label>
+      <div class="upload-box" id="uploadBox">
+        <input type="file" id="resume" accept=".pdf,.docx" onchange="onFileChange()" />
+        <p id="uploadLabel">📄 Click to select PDF or DOCX</p>
+      </div>
+    </div>
+
+    <button onclick="uploadResume()" id="screenBtn">Analyze Resume</button>
+
+  </div>
+
+  <!-- Steps progress -->
+  <div id="loading" class="loading hidden">
+    <div class="loader"></div>
+    <div id="stepText" class="step-text">Extracting resume text...</div>
+    <div class="steps">
+      <div class="step" id="s1">① Parsing resume</div>
+      <div class="step" id="s2">② Extracting skills</div>
+      <div class="step" id="s3">③ Semantic matching</div>
+      <div class="step" id="s4">④ Generating explanation</div>
+    </div>
+  </div>
+
+  <!-- Error box -->
+  <div id="errorBox" class="error-box hidden"></div>
+
+  <!-- Result -->
+  <div id="result" class="result-card hidden"></div>
+
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
